@@ -8,8 +8,4 @@ ENV APP_ROOT /app_rordocker
 RUN mkdir $APP_ROOT
 WORKDIR $APP_ROOT
 
-ADD Gemfile $APP_ROOT/Gemfile
-ADD Gemfile.lock $APP_ROOT/Gemfile.lock
-
-RUN bundle install
 ADD . $APP_ROOT
