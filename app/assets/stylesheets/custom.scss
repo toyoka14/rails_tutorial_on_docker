@@ -4,6 +4,11 @@
 /* mixins, variables, etc. */
 $gray-medium-light: #eaeaea;
 
+@mixin box_sizing {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizinig: border-box;
+    box-sizinig: border-box;
+}
 
 /* universal */
 
@@ -99,4 +104,13 @@ footer {
             margin-top: 15px;
         }
     }
+}
+
+/* miscellaneous */
+.debug_dump {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 45px;
+    @include box_sizing;
 }
