@@ -11,4 +11,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
 
+  test "" do
+  end
+
 end
