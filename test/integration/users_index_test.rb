@@ -4,6 +4,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
   def setup
     @admin = users(:michael)
     @non_admin = users(:archer)
+    @non_activated = users(:lana)
   end
 
   test "index including pagination" do
@@ -12,6 +13,10 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     assert_template 'users/index'
     assert_select 'div.pagination', count: 2
     User.paginate(page: 1).each do |user|
+      if user == @non_activated
+        assert_select 'a[href=?]', user_path(user), text: user.name, count: 0
+        next
+      end
       assert_select 'a[href=?]', user_path(user), text: user.name
       unless user == @admin
         assert_select 'a[href=?]', user_path(user), text: 'delete'
